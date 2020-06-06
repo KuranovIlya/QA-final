@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+    {% set formErrors = form.vars.errors.form.getErrors(true) %}
+        {% if formErrors|length %}
+            <div class="alert-red">
+                <ul>
+                    {% for error in formErrors %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+{{ form_widget(form.atext) }}
+
+<button class="btn btn__send">{{ button_label|default('Отправить') }}</button>
+{{ form_end(form) }}

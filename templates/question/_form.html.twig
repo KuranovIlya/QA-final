@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+
+    {% set formErrors = form.vars.errors.form.getErrors(true) %}
+        {% if formErrors|length %}
+            <div class="alert">
+                <ul>
+                {% for error in formErrors %}
+                    <li>{{ error.message }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+    <p class="new__p">Заголовок</p>
+    {{ form_widget(form.title) }}
+    <p class="new__p">Текст</p>
+    {{ form_widget(form.qtext) }}
+    <p class="new__p">Категория</p>
+    {{ form_widget(form.category) }}
+    <button class="btn btn__style">{{ button_label|default('Сохранить') }}</button>
+{{ form_end(form) }}

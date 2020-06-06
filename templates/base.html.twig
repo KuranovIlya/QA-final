@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header">
+                <div class="container">
+                    <div class="header__inner">
+                        <div class="header__logo ">
+                            <a href="{{ path('about') }}">Вопросы и ответы</a>
+                        </div>
+
+                        <nav class="nav">
+                            {% if app.user != null %}
+                                <p style="display: inline-block; margin-right: 20px; font-size: 12px">Здравствуйте, {{ app.user.fullname }}</p>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <a class="nav__link" href="{{ path('easyadmin') }}">Админка</a>
+                                {% else %}
+                                    <a class="nav__link" style="color: lightgreen" href="{{ path('question_new') }}">Создать</a>
+                                {% endif %}
+                                <a class="nav__link" style="color: orange" href="{{ path('question_index') }}">Вопросы</a>
+                                <a class="nav__link" href="{{ path('app_logout') }}">Выйти</a>
+                            {% else %}
+                                <a class="nav__link" style="color: orange" href="{{ path('question_index') }}">Вопросы</a>
+                                <a class="nav__link" href="{{ path('app_login') }}">Вход</a>
+                                <a class="nav__link" href="{{ path('app_register') }}">Регистрация</a>
+                            {% endif %}
+                        </nav>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+
+            <footer class="footer">
+                <div class="container">
+                    <h2>© 2020 Куранов Илья</h2>
+                </div>
+            </footer>
+        </div>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
+

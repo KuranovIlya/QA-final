@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ question.title }}{% endblock %}
+
+{% block content %}
+    <div class="container__question">
+        <div style="margin-bottom: 20px">
+            <h1 style="font-size: 45px">{{ question.title }}</h1>
+            <p class="question__date" style="margin-left: 0;">{{ question.qdate ? question.qdate|date('Y-m-d H:i') : '' }}
+                <span style="font-size: 14px; color: lightgoldenrodyellow; margin-left: 20px;">Категория: {{ question.category}}</span></p>
+            <p>Автор: {{ question.quser.getFullname()}}</p>
+            <p style="font-size: 30px">{{ question.qtext }}</p>
+            <a class="link__text" href="{{ path('question_index') }}">Назад к списку</a>
+        </div>
+
+        <div class="answers__block">
+            <h2 style="text-align: center">Ответы</h2>
+            {% if app.user != null %}
+                {{ include('answer/_form.html.twig') }}
+            {% endif %}
+            <ul type="none">
+                {% for answer in question.answers %}
+                    <li class="answer">
+                        <div>
+                            <p style="font-size: 14px; ">{{ answer.auser.getFullname() }}
+                                <span style="color: darkblue; margin-left: 50px;">{{ answer.adate ? answer.adate|date('Y-m-d H:i') : '' }}</span></p>
+                            <p>{{ answer.getAtext() }}</p>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="answer">
+                        <p style="color: darkgray; text-align: center">На данный момент у этого вопроса нет ответов.</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+

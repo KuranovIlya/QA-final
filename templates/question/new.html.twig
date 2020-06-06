@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новый вопрос{% endblock %}
+
+{% block content %}
+    <h1>Задайте свой вопрос</h1>
+
+    {{ include('question/_form.html.twig') }}
+
+    <a class="link__text" href="{{ path('question_index') }}">Назад к списку</a>
+{% endblock %}

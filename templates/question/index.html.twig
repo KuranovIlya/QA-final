@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Вопросы{% endblock %}
+
+{% block content %}
+
+    <ul type="none" class="question__list">
+        {% for question in questions %}
+            <li class="question">
+                <div class="question__block">
+                    <p><a href="{{ path('question_show', {'id': question.id}) }}">{{ question.title }}</a></p>
+                    <p class="question__date">{{ question.qdate ? question.qdate|date('Y-m-d H:i') : '' }}</p>
+                </div>
+                <p class="question__answers"> Ответов: {{ question.getAnswers().count() }}</p>
+            </li>
+        {% else %}
+            <li>
+                Нет заданных вопросов.
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
+
