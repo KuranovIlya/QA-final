@@ -1,0 +1,141 @@
+@font-face {
+    font-family: Literata;
+    src: url("../fonts/CM_Literata_Normal.ttf");
+
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Literata";
+    font-size: 20px;
+    overflow: hidden;
+}
+
+body {
+    background: url("../img/bg.png") no-repeat fixed center center;
+    background-size: cover;
+    text-align: center;
+}
+
+p {
+    margin: 10px 0 10px 0;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    max-width: 500px;
+    margin: 7% auto;
+    border-radius: 15px;
+}
+form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 45px;
+    box-sizing: border-box;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+/*  Поля для ввода  */
+
+.input__text {
+    display: flex;
+    width: 100%;
+    min-width: 250px;
+
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    border-radius: 6em;
+}
+.input__text::placeholder {
+    font-family: Literata;
+    font-size: 16px;
+}
+
+/*  Checkbox    */
+
+.check {
+    font-size: 15px;
+    vertical-align: top;
+    margin-top: 20px;
+}
+
+.checkbox {
+    width: 13px;
+    height: 13px;
+    margin: 0;
+}
+
+/*  Ссылка на главную страницу  */
+
+.link {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link__text {
+    text-decoration: none;
+    color: cornflowerblue;
+    font-size: 14px;
+
+    align-items: center;
+}
+
+.link__text:hover {
+    text-decoration: underline;
+}
+
+.link__text:visited {
+    color: cornflowerblue;
+}
+
+/*  Кнопка действия   */
+
+.button-center {
+    margin: 15px 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.button {
+    font-size: 15px;
+    text-decoration: none;
+
+    padding: 10px 16px;
+    margin-left: 40px;
+
+    background: white;
+    border: 2px solid cornflowerblue;
+    border-radius: 28px;
+    color: cornflowerblue;
+    transition: background-color .5s linear, color .5s linear;
+}
+
+.button:hover {
+    background: cornflowerblue;
+    border: 2px solid rgba(255 255 255 0.6);
+    color: white;
+    transition: background-color .5s linear, color .5s linear;
+}
+
+.auth {
+    margin-left: 0;
+}
+
+.alert {
+    padding:5px;
+    font-size:15px;
+    color: red;
+    border: 2px solid;
+}
